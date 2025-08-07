@@ -34,6 +34,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: IBM detect-secrets runner
+      uses: bigpick/ibm-detect-secrets-action@0.0.1
+
     # Download and Install IBM Cloud CLI
     - name: Install IBM Cloud CLI
       run: |
