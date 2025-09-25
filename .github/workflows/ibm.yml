@@ -45,6 +45,7 @@ jobs:
         ibmcloud config --check-version=false
         ibmcloud plugin install -f kubernetes-service
         ibmcloud plugin install -f container-registry
+        
 
     # Authenticate with IBM Cloud CLI
     - name: Authenticate with IBM Cloud CLI
