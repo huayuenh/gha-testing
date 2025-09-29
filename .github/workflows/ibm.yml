@@ -38,6 +38,11 @@ jobs:
       uses: bigpick/ibm-detect-secrets-action@0.0.1
 
     # Download and Install IBM Cloud CLI
+  set-run-ds:
+    name: setup run ds
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
     - name: Install IBM Cloud CLI
       run: |
         curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
@@ -45,8 +50,12 @@ jobs:
         ibmcloud config --check-version=false
         ibmcloud plugin install -f kubernetes-service
         ibmcloud plugin install -f container-registry
-        
 
+  remainder: 
+    name: setup ramaining steps
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
     # Authenticate with IBM Cloud CLI
     - name: Authenticate with IBM Cloud CLI
       run: |
