@@ -60,13 +60,14 @@ jobs:
   remainder: 
     name: setup ramaining steps
     runs-on: ubuntu-latest
-    environment: production
     needs: set-run-ds
+    environment: production
     steps:
     # Authenticate with IBM Cloud CLI
     - env:
         OUTPUT1: ${{needs.set-run-ds.outputs.output1}}
-    - name: Authenticate with IBM Cloud CLI
+    - id: cli-run-install
+      name: Authenticate with IBM Cloud CLI
       run: |
         echo "$OUTPUT1"
         ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g default
