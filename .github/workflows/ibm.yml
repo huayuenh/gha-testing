@@ -31,12 +31,10 @@ jobs:
     environment: production
     steps:
 
-    - id: step1
-    - name: Checkout
+    - id: Checkout
       uses: actions/checkout@v4
 
-    - id: step2
-    - name: IBM detect-secrets runner
+    - id: IBM detect-secrets runner
       uses: bigpick/ibm-detect-secrets-action@0.0.1
 
     # Download and Install IBM Cloud CLI
