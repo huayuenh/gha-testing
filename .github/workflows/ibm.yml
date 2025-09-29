@@ -32,9 +32,11 @@ jobs:
     steps:
 
     - id: Checkout
+      name: checkout out test
       uses: actions/checkout@v4
 
     - id: IBM-detect-secrets-runner
+      name: detect secrets test
       uses: bigpick/ibm-detect-secrets-action@0.0.1
 
     # Download and Install IBM Cloud CLI
