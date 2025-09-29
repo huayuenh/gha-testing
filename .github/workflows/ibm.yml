@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     outputs:
-      output1: ${{ steps.ds-test-id.outputs.test }}
+      output1: ${{steps.ds-test-id.outputs.test}}
     steps:
     - id: ds-test-id
       name: Install IBM Cloud CLI
@@ -65,7 +65,7 @@ jobs:
     steps:
     # Authenticate with IBM Cloud CLI
     - env:
-        OUTPUT1: ${{needs.set-run-ds.outputs.output1}}
+        OUTPUT1: ${{jobs.set-run-ds.outputs.output1}}
       id: cli-run-install
       name: Authenticate with IBM Cloud CLI
       run: |
