@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     outputs:
-      output1: ${{ steps.step1.outputs.hello }}
+      output1: ${{ steps.step1.outputs.test }}
     steps:
     - id: ds-test-id
       name: Install IBM Cloud CLI
@@ -55,7 +55,7 @@ jobs:
         ibmcloud config --check-version=false
         ibmcloud plugin install -f kubernetes-service
         ibmcloud plugin install -f container-registry
-        echo "hello=hello world" >> "$GITHUB_OUTPUT"
+        echo "test=hello world" >> "$GITHUB_OUTPUT"
 
   remainder: 
     name: setup ramaining steps
@@ -63,7 +63,7 @@ jobs:
     environment: production
     steps:
     - env:
-        OUTPUT1: ${{needs.job1.outputs.output1}}
+        OUTPUT1: ${{needs.set-run-ds.outputs.output1}}
     # Authenticate with IBM Cloud CLI
     - name: Authenticate with IBM Cloud CLI
       run: |
