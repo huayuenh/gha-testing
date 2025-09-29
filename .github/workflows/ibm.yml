@@ -61,6 +61,7 @@ jobs:
     name: setup ramaining steps
     runs-on: ubuntu-latest
     environment: production
+    needs: set-run-ds
     steps:
     # Authenticate with IBM Cloud CLI
     - env:
