@@ -9,3 +9,7 @@ runs:
       shell: bash
       run: |
         echo "some unit tests"
+        pwd
+        ls
+        cd gha-testing
+        ls
