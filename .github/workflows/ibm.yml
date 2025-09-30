@@ -39,7 +39,7 @@ jobs:
       name: detect secrets test
       uses: bigpick/ibm-detect-secrets-action@0.0.1
     
-    - id: Unit Tests
-      name: unit-tests
+    - id: unit-tests
+      name: Unit Test
       uses: gha-testing/.github/actions/build/action@main
 
