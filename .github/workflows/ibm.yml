@@ -34,12 +34,18 @@ jobs:
     - id: Checkout
       name: checkout out test
       uses: actions/checkout@v4
+      run: |
+          ls
 
     - id: IBM-detect-secrets-runner
       name: detect secrets test
       uses: bigpick/ibm-detect-secrets-action@0.0.1
+      run: |
+          ls
     
     - id: unit-tests
       name: Unit Test
       uses: huayuenh/gha-testing/.github/actions/build@main
+      run: |
+          ls
 
