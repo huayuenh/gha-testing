@@ -11,5 +11,4 @@ runs:
         echo "some unit tests"
         pwd
         ls
-        cd gha-testing
-        ls
+        ls -a
