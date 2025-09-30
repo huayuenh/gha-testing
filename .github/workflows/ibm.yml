@@ -31,9 +31,9 @@ jobs:
     environment: production
     steps:
 
-    - id: Checkout
-      name: checkout out test
-      uses: actions/checkout@v4
+    #- id: Checkout
+    #  name: checkout out test
+    #  uses: actions/checkout@v4
 
     - id: IBM-detect-secrets-runner
       name: detect secrets test
