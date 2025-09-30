@@ -42,6 +42,14 @@ jobs:
     - id: Install-cli
       name: Install IBMCloud CLI and login
       uses: huayuenh/ghacatalog/ibmcloud@main
+
+    - id: icr-login
+      name: Login into IBMCloud Container Registry
+      uses: huayuenh/ghacatalog/cr@main
+    
+    - id: build-image
+      name: Build the image and push to ICR
+      uses: huayuenh/ghacatalog/build@main
     
     - id: unit-tests
       name: Unit Test
