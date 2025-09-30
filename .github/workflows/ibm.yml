@@ -37,7 +37,11 @@ jobs:
 
     - id: IBM-detect-secrets-runner
       name: detect secrets test
-      uses: bigpick/ibm-detect-secrets-action@0.0.1
+      uses: bigpick/ibm-detect-secrets-action@0.0.1 
+  
+    - id: Install-cli
+      name: Install IBMCloud CLI and login
+      uses: huayuenh/ghacatalog/ibmcloud@main
     
     - id: unit-tests
       name: Unit Test
