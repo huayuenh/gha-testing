@@ -12,3 +12,5 @@ runs:
         pwd
         ls
         ls -a
+        cd .github
+        ls -a
