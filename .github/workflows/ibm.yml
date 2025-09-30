@@ -59,3 +59,7 @@ jobs:
       name: Unit Test
       uses: huayuenh/ghacatalog/unit-tests@main
 
+    - id: deploy
+      name: Deploy to Kubernetes
+      uses: huayuenh/ghacatalog/deploy@main
+
