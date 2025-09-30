@@ -34,6 +34,10 @@ jobs:
     - id: Checkout
       name: checkout out test
       uses: actions/checkout@v4
+      with:
+        # Repository name with owner. For example, actions/checkout
+        # Default: ${{ github.repository }}
+        repository: 'huayuenh/hello-containers'
 
     - id: IBM-detect-secrets-runner
       name: detect secrets test
