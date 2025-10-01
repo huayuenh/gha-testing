@@ -54,6 +54,10 @@ jobs:
     - id: build-image
       name: Build the image and push to ICR
       uses: huayuenh/ghacatalog/build@main
+
+    - id: push-image
+      name: Push image to ICR
+      uses: huayuenh/ghacatalog/push@main
     
     - id: unit-tests
       name: Unit Test
