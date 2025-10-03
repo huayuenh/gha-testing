@@ -9,6 +9,8 @@
 name: Build and Deploy to IKS
 
 on:
+  workflow_dispatch:
+    branches: [ main ]
   push:
     branches: [ "main" ]
 
