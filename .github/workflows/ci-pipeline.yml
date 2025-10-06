@@ -72,14 +72,14 @@ jobs:
         run: |
           echo "$OUTPUT1"
 
-    - id: push-image
-      name: Push To ICR
-      uses: redhat-actions/push-to-registry@v2
-      with:
-        image: "$REGISTRY_HOSTNAME"/"$ICR_NAMESPACE"/"$IMAGE_NAME":"$GITHUB_SHA"
-        tags: "latest"
-        registry: us.icr.io
-        password: ${{ secrets.IBM_CLOUD_API_KEY }}
+   # - id: push-image
+   #   name: Push To ICR
+   #   uses: redhat-actions/push-to-registry@v2
+   #   with:
+   #     image: "$REGISTRY_HOSTNAME"/"$ICR_NAMESPACE"/"$IMAGE_NAME":"$GITHUB_SHA"
+   #     tags: "latest"
+   #     registry: us.icr.io
+   #     password: ${{ secrets.IBM_CLOUD_API_KEY }}
     #- id: push-image
     #  name: Push image to ICR
     #  uses: huayuenh/ghacatalog/push@main
