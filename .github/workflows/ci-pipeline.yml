@@ -40,14 +40,15 @@ jobs:
         # Repository name with owner. For example, actions/checkout
         # Default: ${{ github.repository }}
         repository: 'huayuenh/hello-containers'
-
-    - id: IBM-detect-secrets-runner
-      name: detect secrets test
-      uses: bigpick/ibm-detect-secrets-action@0.0.1 
   
-    - id: Install-cli
-      name: Install IBMCloud CLI and login
-      uses: huayuenh/ghacatalog/ibmcloud@main
+    - id: ibmcloud-login
+      uses: IBM/actions-ibmcloud-cli@v1
+      name: Set up IBMCloud CLI and login
+      with:
+        api_key: ${{ secrets.IBM_CLOUD_API_KEY }}
+        region: us-south
+        group: Default
+        plugins: container-service, secrets-manager
 
     - id: icr-login
       name: Login into IBMCloud Container Registry
