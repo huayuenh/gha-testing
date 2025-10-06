@@ -48,7 +48,7 @@ jobs:
         api_key: ${{ secrets.IBM_CLOUD_API_KEY }}
         region: us-south
         group: cd-setup
-        plugins: container-service, secrets-manager
+        plugins: container-service, secrets-manager, container-registry
 
     - id: ibmcloud-plugin-list
       name: Set up IBMCloud CLI and login
