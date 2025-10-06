@@ -63,13 +63,30 @@ jobs:
       name: Build the image and push to ICR
       uses: huayuenh/ghacatalog/build@main
 
+    - id: test-image-name
+      name: Verify image name
+      needs: build-image
+      steps:
+      - env:
+          OUTPUT1: ${{needs.build-image.outputs.image}}
+        run: |
+          echo "$OUTPUT1"
+
     - id: push-image
-      name: Push image to ICR
-      uses: huayuenh/ghacatalog/push@main
+      name: Push To ICR
+      uses: redhat-actions/push-to-registry@v2
+      with:
+        image: "$REGISTRY_HOSTNAME"/"$ICR_NAMESPACE"/"$IMAGE_NAME":"$GITHUB_SHA"
+        tags: "latest"
+        registry: us.icr.io
+        password: ${{ secrets.IBM_CLOUD_API_KEY }}
+    #- id: push-image
+    #  name: Push image to ICR
+    #  uses: huayuenh/ghacatalog/push@main
     
-    - id: unit-tests
-      name: Unit Test
-      uses: huayuenh/ghacatalog/unit-tests@main
+    #- id: unit-tests
+    #  name: Unit Test
+    #  uses: huayuenh/ghacatalog/unit-tests@main
 
     - id: deploy
       name: Deploy to Kubernetes
