@@ -47,7 +47,7 @@ jobs:
       with:
         api_key: ${{ secrets.IBM_CLOUD_API_KEY }}
         region: us-south
-        group: Default
+        group: cd-setup
         plugins: container-service, secrets-manager
 
     - id: icr-login
