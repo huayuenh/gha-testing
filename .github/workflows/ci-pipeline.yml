@@ -50,6 +50,11 @@ jobs:
         group: cd-setup
         plugins: container-service, secrets-manager
 
+    - id: ibmcloud-plugin-list
+      name: Set up IBMCloud CLI and login
+      run: |
+        ibmcloud plugin list
+
     - id: icr-login
       name: Login into IBMCloud Container Registry
       uses: huayuenh/ghacatalog/cr@main
