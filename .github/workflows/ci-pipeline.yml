@@ -65,8 +65,11 @@ jobs:
 
     - id: test-image-name
       name: Verify image name
+      env:
+        OUTPUT1: ${{needs.build-image.outputs.image_name}}
       run: |
-          echo ${{steps.build-image.outputs.image}}
+          #echo ${{steps.build-image.outputs.image_name}}
+          $echo "${OUTPUT1}"
           echo "some line"
 
    # - id: push-image
