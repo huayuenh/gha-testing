@@ -66,11 +66,8 @@ jobs:
     - id: test-image-name
       name: Verify image name
       needs: build-image
-      steps:
-      - env:
-          OUTPUT1: ${{needs.build-image.outputs.image}}
-        run: |
-          echo "$OUTPUT1"
+      run: |
+          echo ${{steps.build-image.outputs.image}}
 
    # - id: push-image
    #   name: Push To ICR
