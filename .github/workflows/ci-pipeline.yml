@@ -67,6 +67,7 @@ jobs:
       name: Verify image name
       run: |
           echo ${{steps.build-image.outputs.image}}
+          echo "some line"
 
    # - id: push-image
    #   name: Push To ICR
