@@ -93,14 +93,16 @@ jobs:
           echo "${OUTPUT2}"
 
 
-   # - id: push-image
-   #   name: Push To ICR
-   #   uses: redhat-actions/push-to-registry@v2
-   #   with:
-   #     image: "$REGISTRY_HOSTNAME"/"$ICR_NAMESPACE"/"$IMAGE_NAME":"$GITHUB_SHA"
-   #     tags: "latest"
-   #     registry: us.icr.io
-   #     password: ${{ secrets.IBM_CLOUD_API_KEY }}
+    - id: push-image
+      name: Push To ICR
+      env:
+        OUTPUT1: ${{steps.build-image.outputs.imagename}}
+      uses: redhat-actions/push-to-registry@v2
+      with:
+        image: "${OUTPUT1}"
+        tags: "latest"
+        registry: us.icr.io
+        password: ${{ secrets.IBM_CLOUD_API_KEY }}
     #- id: push-image
     #  name: Push image to ICR
     #  uses: huayuenh/ghacatalog/push@main
