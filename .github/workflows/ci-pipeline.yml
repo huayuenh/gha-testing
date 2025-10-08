@@ -44,8 +44,9 @@ jobs:
     - id: build-image
       name: Build Image
       uses: redhat-actions/buildah-build@v2
-      image: us.icr.io/huayuen_tf_test/iks-test
-      tags: "${{ github.sha }}"
+      with:
+        image: us.icr.io/huayuen_tf_test/iks-test
+        tags: "${{ github.sha }}"
 
     - id: ibmcloud-login
       uses: IBM/actions-ibmcloud-cli@v1
