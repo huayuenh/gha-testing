@@ -47,6 +47,8 @@ jobs:
       with:
         image: us.icr.io/huayuen_tf_test/iks-test
         tags: "${{ github.sha }}"
+        containerfiles: |
+          ./Dockerfile
 
     - id: ibmcloud-login
       uses: IBM/actions-ibmcloud-cli@v1
