@@ -44,13 +44,15 @@ jobs:
     - id: build-image
       name: Build Image
       uses: redhat-actions/buildah-build@v2
+      image: us.icr.io/huayuen_tf_test/iks-test
+      tags: "${{ github.sha }}"
 
     - id: ibmcloud-login
       uses: IBM/actions-ibmcloud-cli@v1
       name: Set up IBMCloud CLI and login
       with:
         api_key: ${{ secrets.IBM_CLOUD_API_KEY }}   
-        region: us-south
+        region: "us-south"
         group: cd-setup
         plugins: container-service, container-registry
 
