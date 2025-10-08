@@ -58,10 +58,16 @@ jobs:
         region: "us-south"
         group: cd-setup
         plugins: container-service, container-registry
+    - name: ICR login
+      run: |
+        ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g default
+        ibmcloud cr region-set "${IBM_CLOUD_REGION}"
+        ibmcloud cr login
 
-    - id: icr-login
-      name: Login into IBMCloud Container Registry
-      uses: huayuenh/ghacatalog/cr@main
+
+   # - id: icr-login
+   #   name: Login into IBMCloud Container Registry
+   #   uses: huayuenh/ghacatalog/cr@main
 
     - name: Push To icr
       id: push-to-icr
