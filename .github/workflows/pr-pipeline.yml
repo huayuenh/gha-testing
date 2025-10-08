@@ -25,37 +25,32 @@ env:
   PORT: 5001
 
 jobs:
-  pr_test:
-    name: Setup, Build, Publish, and Deploy
+  pr-pipeline:
+    name: Setup, Test, Build
     runs-on: ubuntu-latest
     environment: production
     steps:
 
-    - id: Checkout
-      name: checkout out test
+    - id: checkout
+      name: Clone repo
       uses: actions/checkout@v4
       with:
         # Repository name with owner. For example, actions/checkout
         # Default: ${{ github.repository }}
         repository: 'huayuenh/hello-containers'
-
-    - id: IBM-detect-secrets-runner
-      name: detect secrets test
-      uses: bigpick/ibm-detect-secrets-action@0.0.1 
   
-    - id: Install-cli
-      name: Install IBMCloud CLI and login
-      uses: huayuenh/ghacatalog/ibmcloud@main
+    - id: unit-test
+      name: Run Unit tests
+      run: |
+        npm install
+        npm run test-unit
 
-    - id: icr-login
-      name: Login into IBMCloud Container Registry
-      uses: huayuenh/ghacatalog/cr@main
-    
     - id: build-image
-      name: Build the image and push to ICR
-      uses: huayuenh/ghacatalog/build@main
-    
-    - id: unit-tests
-      name: Unit Test
-      uses: huayuenh/ghacatalog/unit-tests@main
+      name: Build image
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: us.icr.io/huayuen_tf_test/iks-test
+        tags: "${{ github.sha }}"
+        containerfiles: |
+          ./Dockerfile
 
