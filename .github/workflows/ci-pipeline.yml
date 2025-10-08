@@ -33,16 +33,20 @@ jobs:
     environment: production
     steps:
 
-    - id: Checkout
-      name: checkout out test
+    - id: checkout
+      name: Clone repo
       uses: actions/checkout@v4
       with:
         # Repository name with owner. For example, actions/checkout
         # Default: ${{ github.repository }}
         repository: 'huayuenh/hello-containers'
   
+    - id: unit-test
+      name: Run Unit tests
+      run: npm run test-unit
+
     - id: build-image
-      name: Build Image
+      name: Build image
       uses: redhat-actions/buildah-build@v2
       with:
         image: us.icr.io/huayuen_tf_test/iks-test
@@ -52,7 +56,7 @@ jobs:
 
     - id: ibmcloud-login
       uses: IBM/actions-ibmcloud-cli@v1
-      name: Set up IBMCloud CLI and login
+      name: IBMCloud CLI setup and login
       with:
         api_key: ${{ secrets.IBM_CLOUD_API_KEY }}   
         region: "us-south"
@@ -69,7 +73,7 @@ jobs:
    #   name: Login into IBMCloud Container Registry
    #   uses: huayuenh/ghacatalog/cr@main
 
-    - name: Push To icr
+    - name: Push To ICR
       id: push-to-icr
       uses: redhat-actions/push-to-registry@v2
       with:
